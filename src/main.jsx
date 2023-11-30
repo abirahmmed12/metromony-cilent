@@ -26,11 +26,14 @@ import Viewbiodata from './Dashboard/Viewbiodata';
 import Checkout from './Pages/BiodatasPage/Checkout';
 import Piechart from './Home/Piechart';
 import ApprovedPremium from './Dashboard/ApprovedPremium';
-import { App } from 'antd/lib';
+
 import Req from './Dashboard/Admin/Req';
 import Admindashboard from './Dashboard/Admin/Admindashboard';
 import Userreq from './Dashboard/Userreq';
 import Gotmarried from './Dashboard/Gotmarried';
+import AboutUs from './Pages/AboutUs';
+import ContactUs from './Pages/ContactUs';
+import PrivateRout from './Layout/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -67,7 +70,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/memberdetail/:id",
-        element: <MembersDetail></MembersDetail> ,
+        element: <PrivateRout><MembersDetail></MembersDetail></PrivateRout> ,
         loader: ({ params }) => fetch(`https://metromony-server.vercel.app/members/${params.id}`, {
   headers: {
     Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -87,11 +90,19 @@ const router = createBrowserRouter([
         path: "/checkout",
         element:<Checkout></Checkout>,
       },
+      {
+        path: "/about",
+        element:<AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact",
+        element:<ContactUs></ContactUs>,
+      },
     ],
   },
   {
     path: 'dashboard',
-    element:<Dashboard></Dashboard>,
+    element:<PrivateRout><Dashboard></Dashboard></PrivateRout>,
     children:[
       {
         path:'editbiodata',

@@ -32,6 +32,12 @@ const Navbar = () => {
       <li className="text-white font-bold">
         <NavLink to={"/biodatas"}>Biodatas</NavLink>
       </li>
+      <li className="text-white font-bold">
+        <NavLink to={"/about"}>About Us</NavLink>
+      </li>
+      <li className="text-white font-bold">
+        <NavLink to={"/contact"}>Contact Us</NavLink>
+      </li>
 
      
      
