@@ -22,7 +22,7 @@ const Dashboard = () => {
     {
       isadmin ? <>
  <li className="text-white font-bold p-2">
-      <NavLink to={'/dashboard/adminhome'}>Admin Dashboard</NavLink>
+      <NavLink to={'/dashboard/admin'}>Admin Dashboard</NavLink>
     </li>
     {user && (
       <li className="text-white font-bold  p-2">
@@ -30,10 +30,10 @@ const Dashboard = () => {
       </li>
     )}
     <li className="text-white font-bold  p-2">
-      <NavLink to={'dashboard/approvepremium'}>Approved Premium</NavLink>
+      <NavLink to={'/dashboard/approvepremium'}>Approved Premium</NavLink>
     </li>
     <li className="text-white font-bold  p-2">
-      <NavLink to={'dashboard/approvecontact'}>Approved Contact Request</NavLink>
+      <NavLink to={'/dashboard/approvecontact'}>Approved Contact Request</NavLink>
     </li>
     <li className="text-white font-bold  p-2">
       <NavLink to={'/dashboard/piechart'}>Pie Chart</NavLink>
@@ -50,8 +50,12 @@ const Dashboard = () => {
       </li>
     )}
     <li className="text-white font-bold  p-2">
-      <NavLink to={'/availablefoods'}>My Contact Request</NavLink>
-    </li></>
+      <NavLink to={'/dashboard/userreq'}>My Contact Request</NavLink>
+    </li>
+    <li className="text-white font-bold  p-2">
+      <NavLink to={'/dashboard/gotmarried'}>Got Married</NavLink>
+    </li>
+    </>
     }
       <hr />
     

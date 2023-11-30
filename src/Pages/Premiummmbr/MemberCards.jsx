@@ -17,7 +17,7 @@ const MemberCards = (members) => {
          
   
         <div className="m-4 mx-auto max-w-screen-lg rounded-md border border-gray-100 text-gray-600 shadow-md">
-          <div className="relative flex h-96 flex-col text-gray-600 md:flex-row">
+          <div className="relative flex md::h-96 md::flex-col text-gray-600 md:flex-row">
             <div className="relative p-8 md:w-4/6"> 
               <div className="flex flex-col md:flex-row">
                 <h2 className="m-auto ">Biodata Id:{biodataId}</h2>

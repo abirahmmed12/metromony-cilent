@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/Authprovider";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://metromony-server.vercel.app'
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();

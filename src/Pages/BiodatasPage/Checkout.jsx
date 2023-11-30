@@ -25,7 +25,7 @@ const Checkout = () => {
     console.log('Form submitted:', values);
   
     // Display SweetAlert2 alert
-    Swal.fire('SweetAlert2 is working!');
+    Swal.fire('Request Send!');
   
     // After submitting, you might want to redirect the user or perform other actions
   };

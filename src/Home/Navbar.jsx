@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/Authprovider";
+import useAdmin from "../Hook/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -8,6 +9,7 @@ const Navbar = () => {
   const handleSignout = () => {
     logOut().then().catch();
   };
+  const [isadmin] = useAdmin()
 
   const Navlinks = (
     <>
@@ -16,10 +18,16 @@ const Navbar = () => {
       </li>
     
       {user && (
-        <li className="text-white font-bold">
+      <li className="text-white font-bold">
+        {/* Check if the user is an admin */}
+        {isadmin ? (
+          <NavLink to={"/dashboard/admin"}>Dashboard</NavLink>
+        ) : (
           <NavLink to={"/dashboard/editbiodata"}>Dashboard</NavLink>
-        </li>
-      )}
+        )}
+      </li>
+    )}
+     
 
       <li className="text-white font-bold">
         <NavLink to={"/biodatas"}>Biodatas</NavLink>

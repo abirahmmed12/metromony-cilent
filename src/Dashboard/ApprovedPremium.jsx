@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaUser } from 'react-icons/fa';
-import Swal from 'sweetalert2';
 
-const Manageruser = () => {
+const ApprovedPremium = () => {
     const [manageuser, setManageuser] = useState([]);
-    const [adminLoading, setAdminLoading] = useState(false);
     const [premiumLoading, setPremiumLoading] = useState(false);
 
     useEffect(() => {
@@ -23,46 +21,6 @@ const Manageruser = () => {
                 console.error('Error fetching data:', error);
             });
     }, []);
-
-    const handleMakeAdmin = async (user) => {
-        try {
-            setAdminLoading(true);
-
-            const response = await fetch(`https://metromony-server.vercel.app/members/admin/${user._id}`, {
-                method: 'PATCH',
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Acknowledgment:', data.acknowledge);
-                console.log('Modified Count:', data.modifiedCount);
-
-                const userDataResponse = await fetch('https://metromony-server.vercel.app/members', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
-                    }
-                });
-
-                if (!userDataResponse.ok) {
-                    throw new Error(`Error fetching updated data: ${userDataResponse.statusText}`);
-                }
-
-                const updatedUserData = await userDataResponse.json();
-                setManageuser(updatedUserData);
-
-                Swal.fire('User Admin');
-            } else {
-                console.error('Error making user admin:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error making user admin:', error.message);
-        } finally {
-            setAdminLoading(false);
-        }
-    };
 
     const handleMakePremium = async (user) => {
         try {
@@ -97,7 +55,7 @@ const Manageruser = () => {
             const updatedUserData = await userDataResponse.json();
             setManageuser(updatedUserData);
 
-            Swal.fire('User Premiumed');
+            alert('User has been made premium.');
         } catch (error) {
             console.error('Error:', error.message);
         } finally {
@@ -115,7 +73,6 @@ const Manageruser = () => {
                             <th className="py-2 px-4 bg-slate-300 text-center">S.No</th>
                             <th className="py-2 px-4 bg-slate-300 text-left">User Name</th>
                             <th className="py-2 px-4 bg-slate-300 text-left">User Email</th>
-                            <th className="py-2 px-4 bg-slate-300 text-left">Make Admin</th>
                             <th className="py-2 px-4 bg-slate-300 text-left">Make Premium</th>
                         </tr>
                     </thead>
@@ -126,26 +83,12 @@ const Manageruser = () => {
                                 <td className="py-2 px-4">{user.name}</td>
                                 <td className="py-2 px-4">{user.contactEmail}</td>
                                 <td className="py-2 px-4">
-                                    {user.role === 'admin' ? (
-                                        'Admin'
-                                    ) : (
-                                        <button
-                                            onClick={() => handleMakeAdmin(user)}
-                                            className={`bg-blue-500 flex items-center text-white px-2 py-1 rounded ${adminLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                                            disabled={adminLoading}
-                                        >
-                                            <FaUser />
-                                            Make Admin
-                                        </button>
-                                    )}
-                                </td>
-                                <td className="py-2 px-4">
-                                {user.role2 === 'premium' ? (
+                                    {user.role2 === 'premium' ? (
                                         'Premium'
                                     ) : (
                                         <button
-                                            onClick={() =>handleMakePremium(user)}
-                                            className={`bg-blue-500 flex items-center text-white px-2 py-1 rounded ${premiumLoading ? 'opacity-50 cursor-not-allowed' : 'bb'}`}
+                                            onClick={() => handleMakePremium(user)}
+                                            className={`bg-blue-500 flex items-center text-white px-2 py-1 rounded ${premiumLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                                             disabled={premiumLoading}
                                         >
                                             <FaUser />
@@ -162,4 +105,4 @@ const Manageruser = () => {
     );
 };
 
-export default Manageruser;
+export default ApprovedPremium;

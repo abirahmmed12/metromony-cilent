@@ -12,7 +12,7 @@ const MembersDetail = () => {
 
   useEffect(() => {
     // Fetch all members to find similar biodata
-    fetch('http://localhost:5000/members')
+    fetch('https://metromony-server.vercel.app/members')
       .then((response) => response.json())
       .then((data) => {
         // Filter similar biodata based on gender

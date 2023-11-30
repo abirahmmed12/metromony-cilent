@@ -9,7 +9,7 @@ const Premiummmbr = () => {
     const premiumMembers = allMembers.filter(member => member.role2 === 'premium');
 
     return (
-        <div className='grid grid-cols-2'>
+        <div className='grid lg:grid-cols-2'>
            {
             premiumMembers.map(member => <MemberCards key={member._id} members={member}></MemberCards>)
            }

@@ -25,6 +25,12 @@ import {
 import Viewbiodata from './Dashboard/Viewbiodata';
 import Checkout from './Pages/BiodatasPage/Checkout';
 import Piechart from './Home/Piechart';
+import ApprovedPremium from './Dashboard/ApprovedPremium';
+import { App } from 'antd/lib';
+import Req from './Dashboard/Admin/Req';
+import Admindashboard from './Dashboard/Admin/Admindashboard';
+import Userreq from './Dashboard/Userreq';
+import Gotmarried from './Dashboard/Gotmarried';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Home></Home> ,
-        loader:()=> fetch('http://localhost:5000/members', {
+        loader:()=> fetch('https://metromony-server.vercel.app/members', {
           headers: {
               Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
           }
@@ -43,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element:<Premiummmbr></Premiummmbr> ,
-        loader:()=> fetch('http://localhost:5000/members', {
+        loader:()=> fetch('https://metromony-server.vercel.app/members', {
           headers: {
               Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
           }
@@ -52,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/biodatas",
         element: <BiodatasPage></BiodatasPage> ,
-        loader:()=> fetch('http://localhost:5000/members', {
+        loader:()=> fetch('https://metromony-server.vercel.app/members', {
           headers: {
               Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
           }
@@ -62,7 +68,7 @@ const router = createBrowserRouter([
       {
         path: "/memberdetail/:id",
         element: <MembersDetail></MembersDetail> ,
-        loader: ({ params }) => fetch(`http://localhost:5000/members/${params.id}`, {
+        loader: ({ params }) => fetch(`https://metromony-server.vercel.app/members/${params.id}`, {
   headers: {
     Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
   }
@@ -104,7 +110,32 @@ const router = createBrowserRouter([
         path: 'piechart',
         element:<Piechart></Piechart>,
         
-      }
+      },
+      {
+        path: 'approvepremium',
+        element:<ApprovedPremium></ApprovedPremium>
+        
+      },
+      {
+        path: 'approvecontact',
+        element:<Req></Req>
+        
+      },
+      {
+        path: 'admin',
+        element:<Admindashboard></Admindashboard>
+        
+      },
+      {
+        path: 'userreq',
+        element:<Userreq></Userreq>
+        
+      },
+      {
+        path: 'gotmarried',
+        element:<Gotmarried></Gotmarried>
+        
+      },
 
     ]
   }
@@ -114,8 +145,8 @@ const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
  
-  <QueryClientProvider client={queryClient}>
+  <div className='max-w-screen-xl m-auto'><QueryClientProvider client={queryClient}>
   <AuthProvider> <RouterProvider router={router} /></AuthProvider>
-    </QueryClientProvider>
+    </QueryClientProvider></div>
   </React.StrictMode>,
 )

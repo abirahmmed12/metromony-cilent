@@ -35,7 +35,7 @@ const EditBiodata = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/members', {
+    fetch('https://metromony-server.vercel.app/members', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

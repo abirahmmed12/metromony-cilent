@@ -17,7 +17,7 @@ const MyComponent = () => {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch('http://localhost:5000/members')
+    fetch('https://metromony-server.vercel.app/members')
       .then(response => response.json())
       .then(members => {
         // Filter data based on premium status
