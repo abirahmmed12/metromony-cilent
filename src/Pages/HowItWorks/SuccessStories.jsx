@@ -15,10 +15,10 @@ const SuccessStories = () => {
       reviewStar: 4,
       successStoryText: 'Thanks to this website, we are happily married! The journey was incredible, and we are grateful for the connection.',
     },
-    // Add more success stories as needed
+   
   ];
 
-  // Sort success stories based on marriage date in descending order
+ 
   const sortedSuccessStories = successStories.sort((a, b) => new Date(b.marriageDate) - new Date(a.marriageDate));
 
   return (

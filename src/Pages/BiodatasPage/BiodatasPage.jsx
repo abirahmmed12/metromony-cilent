@@ -12,10 +12,9 @@ const BiodatasPage = () => {
     division: '',
   });
 
-  // Pagination state
+ 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3; // Number of items to display per page
-
+  const itemsPerPage = 3;
   useEffect(() => {
     const filtered = allBiodatas.filter((biodata) => {
       const ageInRange = biodata.age >= filters.age.min && biodata.age <= filters.age.max;
@@ -26,10 +25,10 @@ const BiodatasPage = () => {
     });
 
     setFilteredBiodatas(filtered);
-    setCurrentPage(1); // Reset to the first page when filters change
+    setCurrentPage(1); 
   }, [filters, allBiodatas]);
 
-  // Calculate the indexes of the items to display on the current page
+ 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredBiodatas.slice(indexOfFirstItem, indexOfLastItem);
@@ -38,9 +37,9 @@ const BiodatasPage = () => {
 
   return (
     <div className="flex">
-      {/* Filter Options */}
+     
       <div className="w-1/4 p-4 bg-gray-100">
-        {/* Age Range Filter */}
+      
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Age Range</label>
           <input
@@ -53,7 +52,7 @@ const BiodatasPage = () => {
           <span className="ml-2">{filters.age.min} - {filters.age.max}</span>
         </div>
 
-        {/* Biodata Type Filter */}
+      
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Biodata Type</label>
           <select
@@ -66,7 +65,7 @@ const BiodatasPage = () => {
           </select>
         </div>
 
-        {/* Division Filter */}
+       
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2">Division</label>
           <select
@@ -84,7 +83,7 @@ const BiodatasPage = () => {
         </div>
       </div>
 
-      {/* Display Biodatas */}
+     
       <div className="w-3/4 p-4">
         <h2 className="text-3xl font-semibold mb-6">All Biodatas</h2>
         {currentItems.map((biodata) => (
@@ -101,7 +100,7 @@ const BiodatasPage = () => {
           </div>
         ))}
 
-        {/* Pagination */}
+       
         <div className="mt-4">
           <ul className="flex list-none p-0">
             {Array.from({ length: Math.ceil(filteredBiodatas.length / itemsPerPage) }).map((_, index) => (

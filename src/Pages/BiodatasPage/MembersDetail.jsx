@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import usePremium from '../../Hook/usePremium';
 
 const MembersDetail = () => {
-  const memberId = useLoaderData(); // Assuming useLoaderData returns the member ID
+  const memberId = useLoaderData(); 
 
   const [similarBiodata, setSimilarBiodata] = useState([]);
   const details = useLoaderData();
@@ -11,11 +11,11 @@ const MembersDetail = () => {
   const [contactRequested, setContactRequested] = useState(false);
 
   useEffect(() => {
-    // Fetch all members to find similar biodata
+  
     fetch('https://metromony-server.vercel.app/members')
       .then((response) => response.json())
       .then((data) => {
-        // Filter similar biodata based on gender
+        
         const genderFilter = details?.biodataType === 'Male' ? 'Male' : 'Female';
         const filteredBiodata = data.filter((biodata) => biodata.biodataType === genderFilter && biodata._id !== memberId);
         setSimilarBiodata(filteredBiodata);
@@ -45,7 +45,7 @@ const MembersDetail = () => {
   } = details;
 
   const handleRequestContactInfo = () => {
-    // Logic to handle contact information request (e.g., show a modal or redirect to checkout page)
+   
     setContactRequested(true);
   };
 
@@ -65,7 +65,7 @@ const MembersDetail = () => {
         <p>Expected Partner Height: {expectedPartnerHeight}</p>
         <p>Expected Partner Weight: {expectedPartnerWeight}</p>
 
-        {/* Conditionally render contact information for premium users */}
+       
         {isPremium && !contactRequested && (
           <div className="border-t mt-4 pt-4">
             <p className="font-semibold">Contact Information for Premium Users</p>

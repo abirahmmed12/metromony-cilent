@@ -9,17 +9,17 @@ const Admindashboard = () => {
   });
 
   useEffect(() => {
-    // Fetch data from the API
+   
     fetch('https://metromony-server.vercel.app/members')
       .then(response => response.json())
       .then(data => {
-        // Calculate counts based on biodataType and role2
+       
         const totalBiodataCount = data.length;
         const maleBiodataCount = data.filter(member => member.biodataType === 'Male').length;
         const femaleBiodataCount = data.filter(member => member.biodataType === 'Female').length;
         const premiumBiodataCount = data.filter(member => member.role2 === 'premium').length;
 
-        // Update the state with the counts
+       
         setBiodataCounts({
           total: totalBiodataCount,
           male: maleBiodataCount,

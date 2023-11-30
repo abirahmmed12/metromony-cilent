@@ -16,10 +16,7 @@ const Gotmarried = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Add your form submission logic here
-    // For example, send data to your backend or API
-
-    // Reset the form after submission
+   
     setFormData({
       selfBiodataNumber: '',
       partnerBiodataNumber: '',
@@ -27,7 +24,7 @@ const Gotmarried = () => {
       successStory: '',
     });
 
-    // Optionally, you can show a success message or redirect the user
+   
     alert('Form submitted successfully!');
   };
 

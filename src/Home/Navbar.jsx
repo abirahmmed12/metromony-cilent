@@ -19,7 +19,7 @@ const Navbar = () => {
     
       {user && (
       <li className="text-white font-bold">
-        {/* Check if the user is an admin */}
+    
         {isadmin ? (
           <NavLink to={"/dashboard/admin"}>Dashboard</NavLink>
         ) : (

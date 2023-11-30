@@ -16,14 +16,14 @@ const MyComponent = () => {
   });
 
   useEffect(() => {
-    // Fetch data from the API
+  
     fetch('https://metromony-server.vercel.app/members')
       .then(response => response.json())
       .then(members => {
-        // Filter data based on premium status
+       
         const premiumMembers = members.filter(member => member.isPremium);
 
-        // Update the state with the counts
+        
         setChartData({
           labels: ['Total', 'Male', 'Female', 'Premium'],
           datasets: [
@@ -44,21 +44,21 @@ const MyComponent = () => {
   }, []);
 
   useEffect(() => {
-    // Destroy the previous chart before rendering a new one
+    
     if (chart) {
       chart.destroy();
     }
 
-    // Create a new chart
+   
     const newChart = new Chart(document.getElementById('myChart'), {
       type: 'pie',
       data: chartData,
     });
 
-    // Set the new chart in the state
+   
     setChart(newChart);
 
-    // Clean up the chart when the component unmounts
+    
     return () => {
       newChart.destroy();
     };

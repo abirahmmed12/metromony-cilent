@@ -8,7 +8,7 @@ const Manageruser = () => {
     const [premiumLoading, setPremiumLoading] = useState(false);
 
     useEffect(() => {
-        // Fetch data from the API endpoint
+      
         fetch('https://metromony-server.vercel.app/members', {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
@@ -16,7 +16,7 @@ const Manageruser = () => {
         })
             .then(response => response.json())
             .then(data => {
-                // Update the state with the fetched data
+              
                 setManageuser(data);
             })
             .catch(error => {

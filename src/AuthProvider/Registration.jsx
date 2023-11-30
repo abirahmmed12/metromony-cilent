@@ -24,7 +24,7 @@ const Registration = () => {
         setRgError('');
         setRegistrationSuccess(false);
 
-        // Define a regular expression for at least one special character
+       
         const specialCharRegex = /[!@#$%^&*()_+[\]{};':"\\|,.<>?]+/;
 
         if (!/[A-Z]/.test(password)) {
@@ -39,10 +39,10 @@ const Registration = () => {
 
         createUser(email, password, name)
             .then(async (userCredential) => {
-                // User registration successful
+               
                 const user = userCredential.user;
 
-                // Update the user's profile with name and photoURL
+              
                 await updateProfile(user, {
                     displayName: name,
                     photoURL: photoURL,

@@ -9,25 +9,25 @@ import Swal from 'sweetalert2';
 const Checkout = () => {
   const { user } = useContext(AuthContext);
 
-  // Replace with the actual biodataId, selfBiodataId, and selfEmail
+ 
   const biodataId = '6563420e9835b66b39b3844a';
-  const selfBiodataId = '...'; // Replace with actual data
-  const selfEmail = user?.email || ''; // Use optional chaining to handle cases where user is null
+  const selfBiodataId = '...'; 
+  const selfEmail = user?.email || '';
 
-  // Validation schema for the form
+ 
   const validationSchema = Yup.object().shape({
     stripeCardNumber: Yup.string().required('Stripe Card Number is required'),
   });
 
-  // Submit function
+ 
   const handleSubmit = (values, { setSubmitting }) => {
-    // You can handle the submission logic here (e.g., send data to the server)
+   
     console.log('Form submitted:', values);
   
-    // Display SweetAlert2 alert
+   
     Swal.fire('Request Send!');
   
-    // After submitting, you might want to redirect the user or perform other actions
+   
   };
 
   return (

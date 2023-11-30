@@ -5,7 +5,7 @@ import MemberCards from './memberCards';
 const Premiummmbr = () => {
     const allMembers = useLoaderData();
 
-    // Filter only premium members
+   
     const premiumMembers = allMembers.filter(member => member.role2 === 'premium');
 
     return (
